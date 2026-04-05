@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nourhan Mahmoud - Mobile App Developer</title>
+    <!-- Ultra Modern Sans-Serif Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #1a1025;
+            --primary: #f43f5e;
+            --secondary: #8b5cf6;
+            --accent: #fbbf24;
+            --text-main: #ffffff;
+            --text-muted: #cbd5e1;
+            --card-bg: rgba(255, 255, 255, 0.04);
+            --card-border: rgba(255, 255, 255, 0.12);
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+            --font-heading: 'Outfit', sans-serif;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            background-image: radial-gradient(circle at top left, rgba(244, 63, 94, 0.15) 0%, transparent 40%),
+                              radial-gradient(circle at bottom right, rgba(139, 92, 246, 0.15) 0%, transparent 40%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 1.2rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(2, 6, 23, 0.6); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            z-index: 1000; border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo { 
+            font-size: 1.8rem; font-weight: 800; font-family: var(--font-heading); 
+            background: linear-gradient(to right, #f8fafc, #94a3b8);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a { 
+            color: var(--text-main); text-decoration: none; font-weight: 600; 
+            font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; 
+            transition: var(--transition); opacity: 0.8;
+        }
+        .nav-links a:hover { opacity: 1; color: var(--accent); text-shadow: 0 0 15px rgba(45, 212, 191, 0.5); }
+
+        section { padding: 6rem 5% 4rem; max-width: 1400px; margin: 0 auto; position: relative; z-index: 2;}
+        
+        .title-container { text-align: left; margin-bottom: 4rem; }
+        .section-title { 
+            font-family: var(--font-heading); 
+            font-size: 3.5rem; 
+            font-weight: 800;
+            color: var(--text-main); 
+            display: inline-block; 
+            padding-bottom: 0.5rem;
+            position: relative;
+            letter-spacing: -1px;
+        }
+        .section-title::after {
+            content: ''; position: absolute; left: 0; bottom: 0; width: 60px; height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary)); border-radius: 5px;
+        }
+
+        /* General layout */
+        .flex-row { display: flex; gap: 3rem; flex-wrap: wrap; }
+        .flex-col { flex: 1; min-width: 320px; }
+
+        p { font-size: 1.1rem; color: var(--text-muted); }
+
+        /* Hero */
+        .hero { display: flex; align-items: center; min-height: 95vh; padding-top: 8rem; }
+        .hero-left { flex: 1.2; }
+        .hero-left h1 { font-size: 4.5rem; font-weight: 800; font-family: var(--font-heading); margin-bottom: 1rem; line-height: 1.1; }
+        .hero-left h1 span { 
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-left p { font-size: 1.2rem; max-width: 700px; margin-bottom: 1.5rem; line-height: 1.8; color: var(--text-muted);}
+        .hero-btn {
+            display: inline-block; padding: 1rem 2.5rem; font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--secondary)); color: #fff; text-decoration: none;
+            border-radius: 50px; font-family: var(--font-heading); letter-spacing: 1px; font-size: 1.1rem;
+            transition: var(--transition); box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3); border: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+        .hero-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(139, 92, 246, 0.5); border-color: rgba(255,255,255,0.3);}
+        .hero-btn.secondary {
+            background: transparent; box-shadow: none; border: 2px solid var(--text-muted); color: var(--text-main);
+        }
+        .hero-btn.secondary:hover { background: rgba(255,255,255,0.05); border-color: var(--primary); color: var(--primary); }
+        
+        .hero-right { display: flex; justify-content: center; align-items: center; flex: 0.8; position: relative; }
+        .hero-right .blob { 
+            position: absolute;
+            width: 450px; height: 450px; 
+            background: linear-gradient(135deg, rgba(244, 63, 94, 0.6), rgba(139, 92, 246, 0.6)); 
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; 
+            animation: morph 8s ease-in-out infinite;
+            box-shadow: inset 0 0 50px rgba(255,255,255,0.1), 0 0 100px rgba(244, 63, 94, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.05);
+            z-index: 1;
+        }
+        .hero-img {
+            position: relative;
+            z-index: 2;
+            width: 350px;
+            height: 480px;
+            object-fit: cover;
+            border-radius: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 40px rgba(244, 63, 94, 0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        @keyframes morph {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; transform: rotate(5deg) scale(1.05); }
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--card-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border); border-radius: 20px; padding: 2.5rem;
+            transition: var(--transition); position: relative; overflow: hidden;
+        }
+        .glass-card::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent);
+            transform: skewX(-20deg); transition: 0.5s;
+        }
+        .glass-card:hover::before { left: 150%; }
+        .glass-card:hover { transform: translateY(-8px); border-color: rgba(255, 255, 255, 0.15); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(59, 130, 246, 0.15); }
+
+        /* Education */
+        .edu-item { display: flex; flex-direction: column; gap: 1rem; }
+        .edu-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+        .edu-banner { 
+            color: #fff; font-family: var(--font-heading); font-weight: 700; font-size: 1.4rem; 
+        }
+        .edu-date { 
+            font-weight: 700; font-size: 1.1rem; color: var(--accent); 
+            background: rgba(45, 212, 191, 0.1); padding: 0.4rem 1rem; border-radius: 50px; border: 1px solid rgba(45, 212, 191, 0.2);
+        }
+
+        /* Skills */
+        .skills-section { display: flex; gap: 5rem; align-items: stretch;}
+        .skills-left { flex: 1; max-width: 500px; display: flex; flex-direction: column;}
+        .skill-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; color: var(--text-main); font-weight: 600; font-size: 1.1rem; }
+        .skill-row:last-child { margin-bottom: 0; }
+        .stars i { color: rgba(255,255,255,0.05); margin-left: 6px; font-size: 1.1rem; transition: var(--transition);}
+        .stars i.filled { color: #fbbf24; text-shadow: 0 0 10px rgba(251, 191, 36, 0.5); }
+
+        .skills-right { flex: 1.2; display: flex; flex-direction: column; justify-content: center; }
+        .skills-right .contact-title { font-size: 3.5rem; font-family: var(--font-heading); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; }
+        .skills-right .contact-title span { color: var(--accent); }
+        .skills-right p { font-size: 1.15rem; line-height: 1.8; color: #cbd5e1; }
+
+        /* Work & Services Layout */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
+        .service-card { display: flex; flex-direction: column; height: 100%;}
+        .service-card h3 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: #fff; }
+        .service-card i { 
+            font-size: 2.5rem; margin-bottom: 1.5rem; 
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        /* Sliders */
+        .slider-wrapper { position: relative; margin-bottom: 2rem; }
+        .slider-container { display: flex; gap: 2.5rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 2.5rem; scrollbar-width: thin; scrollbar-color: var(--primary) rgba(255,255,255,0.05); scroll-behavior: smooth; }
+        .slider-container::-webkit-scrollbar { height: 8px; }
+        .slider-container::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); border-radius: 10px;}
+        .slider-container::-webkit-scrollbar-thumb { background: linear-gradient(to right, var(--primary), var(--secondary)); border-radius: 10px;}
+        
+        .card { flex: 0 0 350px; scroll-snap-align: start; padding: 0; display: flex; flex-direction: column; border-radius: 20px;}
+        .card-img-container { width: 100%; height: 200px; background-color: #0f172a; position: relative; overflow: hidden; border-bottom: 1px solid var(--card-border); }
+        .card-img-placeholder { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 1.2rem; background: rgba(255,255,255,0.02); }
+        .card-content { padding: 1.8rem; flex-grow: 1; background: var(--card-bg); backdrop-filter: blur(12px);}
+        .card-title { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 700; margin-bottom: 0.8rem; color: #fff; }
+
+        .scroll-btn { 
+            position: absolute; top: 40%; transform: translateY(-50%); 
+            width: 55px; height: 55px; border-radius: 50%; 
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(8px);
+            border: 1px solid var(--card-border); color: #fff; 
+            font-size: 1.2rem; display: flex; align-items: center; justify-content: center; 
+            cursor: pointer; z-index: 10; transition: var(--transition); 
+        }
+        .scroll-btn:hover { background: var(--primary); border-color: var(--primary); box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+        .scroll-btn.right { right: -25px; } .scroll-btn.left { left: -25px; }
+
+        /* Contact Section */
+        #contact { margin-top: 5rem; margin-bottom: 5rem; }
+        .contact-glass {
+            position: relative; overflow: hidden; padding: 5rem; border-radius: 30px;
+            display: flex; flex-wrap: wrap; gap: 4rem; justify-content: space-between; align-items: center;
+        }
+        .contact-glass::before {
+            content: ''; position: absolute; left: -100px; bottom: -100px; width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, transparent 70%); filter: blur(40px); z-index: -1;
+        }
+        .contact-title { font-size: 4.5rem; font-family: var(--font-heading); font-weight: 800; line-height: 1.1; letter-spacing: -2px; }
+        .contact-title span { background: linear-gradient(to right, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .contact-info { display: flex; flex-direction: column; gap: 1.8rem; align-items: flex-end; text-align: right; z-index: 2; }
+        .contact-item { display: flex; align-items: center; gap: 1.5rem; justify-content: flex-end; width: 100%; }
+        .contact-item span, .contact-item a { font-weight: 600; font-size: 1.2rem; color: #cbd5e1; text-decoration: none; transition: var(--transition); letter-spacing: 0.5px;}
+        .contact-item a:hover { color: var(--accent); text-shadow: 0 0 10px rgba(45, 212, 191, 0.5); }
+        .contact-icon { width: 55px; height: 55px; background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 1.3rem; transition: var(--transition); }
+        .contact-item:hover .contact-icon { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 0 20px rgba(59, 130, 246, 0.6); transform: scale(1.1) rotate(10deg); }
+
+        footer { padding: 2.5rem 5%; border-top: 1px solid var(--card-border); color: var(--text-muted); font-size: 0.95rem; font-weight: 600; letter-spacing: 1px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-socials { display: flex; gap: 1.5rem; font-size: 1.5rem; }
+        .footer-socials a { color: var(--text-muted); transition: var(--transition); text-decoration: none; }
+        .footer-socials a:hover { color: var(--accent); transform: scale(1.1); text-shadow: 0 0 10px rgba(45, 212, 191, 0.5); }
+
+        @media (max-width: 900px) {
+            .flex-row { flex-direction: column; gap: 3rem; }
+            .skills-section { flex-direction: column; }
+            .hero { flex-direction: column; text-align: center; padding-top: 7rem; min-height: auto;}
+            .hero-right .blob { width: 300px; height: 300px; margin-top: 3rem; }
+            .section-title { font-size: 3rem; }
+            .hero-left h1 { font-size: 3.5rem; }
+            .contact-glass { padding: 3rem 2rem; text-align: center; justify-content: center; flex-direction: column;}
+            .contact-info { align-items: center; text-align: center; }
+            .contact-item { justify-content: center; flex-direction: row-reverse;}
+            .contact-title { font-size: 3.5rem; }
+            .title-container { text-align: center; }
+            .section-title::after { left: 50%; transform: translateX(-50%); }
+            .scroll-btn { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Nourhan.</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#certificates">Certificates</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-left">
+            <h1>Mobile App<br><span>Developer</span></h1>
+            <p>I am a passionate Mobile Application Developer specializing in building high-quality cross-platform applications using Flutter. I have experience in designing and developing user-friendly, responsive, and scalable mobile apps for both Android and iOS platforms.</p>
+            <p>I focus on writing clean, maintainable code and creating smooth user experiences. I am skilled in working with APIs, state management, and integrating modern UI/UX designs into functional applications. I am always eager to learn new technologies, improve my skills, and take on new challenges that help me grow as a developer.</p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
+                <a href="#projects" class="hero-btn">View My Work</a>
+                <!-- مسار ملف السيرة الذاتية (CV) هنا -->
+                <a href="Nourhan_CV.pdf" target="_blank" class="hero-btn secondary"><i class="fa-solid fa-download"></i> Download CV</a>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="blob"></div>
+            <img src="../picture/WhatsApp Image 2026-04-05 at 12.38.16 PM.jpeg" alt="Nourhan Profile" class="hero-img">
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="title-container" style="text-align: center;">
+            <h2 class="section-title">About Me</h2>
+        </div>
+        <div class="glass-card" style="text-align: center; margin: 0 auto; max-width: 900px; padding: 3rem;">
+            <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-main);">
+                I am a dedicated Mobile Application Developer specializing in Flutter. I have a strong passion for creating modern, efficient, and user-friendly mobile applications. I enjoy solving problems, learning new technologies, and turning ideas into real-world applications. I am always motivated to improve my skills and build high-quality apps that provide a great user experience.
+            </p>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="title-container">
+            <h2 class="section-title">Education</h2>
+        </div>
+        <div class="flex-row">
+            <div class="flex-col edu-item glass-card">
+                <div class="edu-header">
+                    <div class="edu-banner">Bachelor of Commerce – Business Information Systems (BIS)</div>
+                    <div class="edu-date">2023-2027</div>
+                </div>
+                <p>Specialized in information systems, data analysis, and web technologies. Studying business management alongside technical skills like databases, programming, and systems development. Actively applying academic knowledge in real-world web design projects.</p>
+            </div>
+            
+            <div class="flex-col edu-item glass-card">
+                <div class="edu-header">
+                    <div class="edu-banner">Mobile App Development using Flutter (NTI)</div>
+                    <div class="edu-date">2025</div>
+                </div>
+                <p>Specialized in mobile application development, software engineering, and modern programming technologies. Studying core concepts such as databases, data structures, and system design alongside Flutter development. Actively applying academic knowledge in real-world projects, including mobile app development and UI/UX design.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="skills-section">
+            <div class="skills-left glass-card">
+                <div class="skill-row">
+                    Flutter & Dart
+                    <div class="stars">
+                        <i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    APIs Integration
+                    <div class="stars">
+                        <i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    State Management
+                    <div class="stars">
+                        <i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    UI/UX Implementation
+                    <div class="stars">
+                        <i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    Responsive Design
+                    <div class="stars">
+                        <i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star filled"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="skills-right">
+                <h2 class="contact-title">Why Hire<br><span>Me?</span></h2>
+                <p>By leveraging these skills, I help clients bring their ideas to life ensuring the final product is user-friendly, responsive, and aligned with their brand identity. My goal is to turn your vision into a reality by crafting visually appealing and functional mobile experiences. You will gain increased engagement, improved user experience, and a modern design that sets your app apart.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="title-container">
+            <h2 class="section-title">Work Experience</h2>
+        </div>
+        <div class="cards-grid">
+            <div class="service-card glass-card">
+                <h3>Freelance Flutter Developer</h3>
+                <p style="margin-bottom: 1rem; color: var(--accent); font-weight: 600;">2024 - Present</p>
+                <p>Developed and deployed cross-platform mobile applications for various clients. Focus on clean architecture, smooth UI animations, and integrating complex RESTful APIs ensuring robust app performance.</p>
+            </div>
+            <div class="service-card glass-card">
+                <h3>UI/UX to Code Specialist</h3>
+                <p style="margin-bottom: 1rem; color: var(--accent); font-weight: 600;">2023 - 2024</p>
+                <p>Translating intricate Figma and Adobe XD designs into pixel-perfect Flutter layouts. Ensured strict adherence to design guidelines while optimizing applications for multiple screen sizes and orientations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="title-container">
+            <h2 class="section-title">Offered Services</h2>
+        </div>
+        <div class="cards-grid">
+            <div class="service-card glass-card" style="padding: 0; align-items: stretch; text-align: center;">
+                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=600&auto=format&fit=crop" alt="Mobile Dev" style="width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--card-border);">
+                <div style="padding: 2.5rem;">
+                    <h3>Custom App Development</h3>
+                    <p>Building tailored, high-performance mobile applications for Android and iOS using the Flutter framework from scratch to deployment.</p>
+                </div>
+            </div>
+            <div class="service-card glass-card" style="padding: 0; align-items: stretch; text-align: center;">
+                <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?q=80&w=600&auto=format&fit=crop" alt="Code" style="width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--card-border);">
+                <div style="padding: 2.5rem;">
+                    <h3>API & Backend Integration</h3>
+                    <p>Connecting your mobile applications seamlessly with RESTful APIs, Firebase, and other backend architectures for real-time data handling.</p>
+                </div>
+            </div>
+            <div class="service-card glass-card" style="padding: 0; align-items: stretch; text-align: center;">
+                <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=600&auto=format&fit=crop" alt="UI Design" style="width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--card-border);">
+                <div style="padding: 2.5rem;">
+                    <h3>UI/UX Implementation</h3>
+                    <p>Taking your Figma or Adobe XD designs and transforming them into beautiful, smooth, and highly responsive interactive mobile interfaces.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="title-container" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 2rem;">
+            <h2 class="section-title" style="margin-bottom: 0;">Featured Projects</h2>
+            <a href="https://github.com/nmotako27-lgtm" target="_blank" style="display: inline-flex; align-items: center; gap: 0.8rem; padding: 0.8rem 1.8rem; background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); color: #fff; text-decoration: none; font-weight: 600; font-size: 1.1rem; border-radius: 50px; transition: var(--transition);">
+                <i class="fa-brands fa-github" style="font-size: 1.5rem;"></i> View My GitHub
+            </a>
+        </div>
+        <div class="slider-wrapper">
+            <button class="scroll-btn right" onclick="scrollSlider('projects-slider', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+            <button class="scroll-btn left" onclick="scrollSlider('projects-slider', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+
+            <div class="slider-container" id="projects-slider">
+                <!-- Project 1: Patient App (Main) -->
+                <div class="card glass-card">
+                    <div class="card-img-container" style="height: 400px; background: rgba(0,0,0,0.4);">
+                        <img src="../picture/WhatsApp Image 2026-03-31 at 7.13.00 AM.jpeg" alt="Dental Services" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top:0; left:0; z-index: 10; padding: 15px;">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Dental Clinic (Patient App)</h3>
+                        <p class="card-desc">A complete Flutter application for dental clinics, allowing patients to browse services (Whitening, Implants) and book appointments with specialized dentists.</p>
+                        <div style="margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+                            <h4 style="color: var(--accent); font-size: 1rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-code-compare"></i> Challenge & Solution:</h4>
+                            <p class="card-desc" style="font-size: 0.95rem;"><strong>Challenge:</strong> Ensuring a smooth UI while loading extensive lists of dental services and images.<br><strong>Solution:</strong> Used cached network images and optimized Flutter's ListView builder for high-performance rendering.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Doctor Dashboard -->
+                <div class="card glass-card">
+                    <div class="card-img-container" style="height: 400px; background: rgba(0,0,0,0.4);">
+                        <img src="../picture/WhatsApp Image 2026-03-31 at 7.13.00 AM (1).jpeg" alt="Doctor Dashboard" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top:0; left:0; z-index: 10; padding: 15px;">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Clinic App (Doctor Panel)</h3>
+                        <p class="card-desc">A dedicated interface for dentists to check their schedules, manage daily appointments, and stay connected with their patients efficiently.</p>
+                        <div style="margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+                            <h4 style="color: var(--accent); font-size: 1rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-code-compare"></i> Challenge & Solution:</h4>
+                            <p class="card-desc" style="font-size: 0.95rem;"><strong>Challenge:</strong> Providing a real-time, categorized overview of a dynamic daily schedule.<br><strong>Solution:</strong> Integrated real-time Firebase listeners with complex indexing to separate past, current, and future appointments efficiently.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Booking System -->
+                <div class="card glass-card">
+                    <div class="card-img-container" style="height: 400px; background: rgba(0,0,0,0.4);">
+                        <img src="../picture/WhatsApp Image 2026-03-31 at 7.13.00 AM (2).jpeg" alt="Booking System" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top:0; left:0; z-index: 10; padding: 15px;">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Smart Booking System</h3>
+                        <p class="card-desc">Features an intuitive calendar and time-slot selection system (Morning/Evening slots) allowing users to pick their preferred time for a check-up.</p>
+                        <div style="margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+                            <h4 style="color: var(--accent); font-size: 1rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-code-compare"></i> Challenge & Solution:</h4>
+                            <p class="card-desc" style="font-size: 0.95rem;"><strong>Challenge:</strong> Handling concurrency where two patients might attempt to book the exact same time slot simultaneously.<br><strong>Solution:</strong> Implemented optimistic UI updates with backend transaction locks to guarantee slot exclusivity.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Authentication -->
+                <div class="card glass-card">
+                    <div class="card-img-container" style="height: 400px; background: rgba(0,0,0,0.4);">
+                        <img src="../picture/WhatsApp Image 2026-03-31 at 7.13.00 AM (3).jpeg" alt="Authentication" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top:0; left:0; z-index: 10; padding: 15px;">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Secure Authentication</h3>
+                        <p class="card-desc">A custom-built secure login and registration system with a clean UI, ensuring patient data and doctor accounts are kept private.</p>
+                        <div style="margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+                            <h4 style="color: var(--accent); font-size: 1rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-code-compare"></i> Challenge & Solution:</h4>
+                            <p class="card-desc" style="font-size: 0.95rem;"><strong>Challenge:</strong> Securing user data and keeping authentication states persistent across app restarts.<br><strong>Solution:</strong> Used secure internal storage for token caching and implemented an auto-login routing mechanism for a seamless UX.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certificates">
+        <div class="title-container">
+            <h2 class="section-title">Certifications</h2>
+        </div>
+        <div class="slider-wrapper">
+            <button class="scroll-btn right" onclick="scrollSlider('certs-slider', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+            <button class="scroll-btn left" onclick="scrollSlider('certs-slider', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+            
+            <div class="slider-container" id="certs-slider">
+                <!-- Certificate 1: Ultimate Academy Onyx ERP -->
+                <div class="card glass-card">
+                    <div class="card-img-container">
+                        <img src="../picture/WhatsApp Image 2026-03-31 at 7.10.29 AM.jpeg" alt="Ultimate Academy" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top:0; left:0; z-index: 10;">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Electronic Accounting (Onyx ERP)</h3>
+                        <p class="card-desc">Certificate of Completion from Ultimate Academy for successful completion of 15 Hours of Electronic Accounting on the Onyx ERP System.</p>
+                    </div>
+                </div>
+
+                <!-- Certificate 2: YLY HR Committee -->
+                <div class="card glass-card">
+                    <div class="card-img-container">
+                        <img src="../picture/WhatsApp Image 2026-03-31 at 7.10.29 AM (1).jpeg" alt="YLY HR" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top:0; left:0; z-index: 10;">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">YLY HR Committee Member</h3>
+                        <p class="card-desc">Certificate of Appreciation from the Ministry of Youth and Sports for outstanding efforts as a Human Resources Committee member in the YLY project.</p>
+                    </div>
+                </div>
+
+                <!-- Certificate 3: YLP Youth Leadership Program -->
+                <div class="card glass-card">
+                    <div class="card-img-container">
+                        <img src="../picture/WhatsApp Image 2026-03-31 at 7.10.29 AM (2).jpeg" alt="YLP" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top:0; left:0; z-index: 10;">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Youth Leadership Program (YLP)</h3>
+                        <p class="card-desc">Certificate of Appreciation for successfully completing the Youth Leadership Program (YLP) training period 2024-2025.</p>
+                    </div>
+                </div>
+
+                <!-- Certificate 4: BIS Assiut OC Committee -->
+                <div class="card glass-card">
+                    <div class="card-img-container">
+                        <img src="../picture/WhatsApp Image 2026-03-31 at 7.10.29 AM (3).jpeg" alt="BIS OC" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top:0; left:0; z-index: 10;">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">OC Committee Member (BIS Assiut)</h3>
+                        <p class="card-desc">Certificate of Appreciation for being a key part of the Organizing Committee team and warmly welcoming newcomers.</p>
+                    </div>
+                </div>
+
+                <!-- Certificate 5: Advanced English Course -->
+                <div class="card glass-card">
+                    <div class="card-img-container">
+                        <img src="../picture/WhatsApp Image 2026-03-31 at 7.07.30 AM (1).jpeg" alt="English Course" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top:0; left:0; z-index: 10;">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Advanced English Course (Level 12)</h3>
+                        <p class="card-desc">Certificate from the Computer Science Training Center for successfully completing the English Language General Course with a grade of 'Excellent'.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-glass glass-card">
+            <div>
+                <h2 class="contact-title">Let’s Work<br><span>Together</span></h2>
+            </div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <a href="https://wa.me/201022896212" target="_blank">WhatsApp Me</a>
+                    <div class="contact-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                </div>
+                <div class="contact-item">
+                    <a href="tel:+201022896212">+20 102 289 6212</a>
+                    <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                </div>
+                <div class="contact-item">
+                    <a href="mailto:nwrhanmhmwd357@gmail.com">nwrhanmhmwd357@gmail.com</a>
+                    <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                </div>
+                <div class="contact-item">
+                    <span>Assiut, Egypt</span>
+                    <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Nourhan Mahmoud Shawky | Built with Flutter logic & elegant design.</p>
+        <div class="footer-socials">
+            <a href="https://github.com/nmotako27-lgtm" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            <!-- رابط صفحتك على لينكد إن هنا -->
+            <a href="#" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <!-- رابط صفحتك على أي منصة أخرى (مثل بيهانس) هنا -->
+            <a href="#" target="_blank" title="Behance"><i class="fa-brands fa-behance"></i></a>
+        </div>
+    </footer>
+
+    <script src="java.js"></script>
+
+</body>
+</html>
