@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nourhan Mahmoud - Mobile App Developer</title>
+    <meta name="description" content="Nourhan Mahmoud – Mobile App Developer specializing in Flutter. Building high-quality cross-platform apps for Android and iOS with clean UI/UX and API integration.">
     <!-- Ultra Modern Sans-Serif Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -234,7 +235,31 @@
         .footer-socials a { color: var(--text-muted); transition: var(--transition); text-decoration: none; }
         .footer-socials a:hover { color: var(--accent); transform: scale(1.1); text-shadow: 0 0 10px rgba(45, 212, 191, 0.5); }
 
+        /* Hamburger menu */
+        .hamburger {
+            display: none; background: none; border: 1px solid var(--card-border);
+            color: var(--text-main); width: 45px; height: 45px; border-radius: 10px;
+            font-size: 1.2rem; cursor: pointer; align-items: center; justify-content: center;
+            transition: var(--transition);
+        }
+        .hamburger:hover { border-color: var(--primary); color: var(--primary); }
+
+        /* Active nav link highlight */
+        .nav-links a.active { color: var(--accent) !important; opacity: 1 !important; }
+
         @media (max-width: 900px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none; flex-direction: column; gap: 0;
+                position: fixed; top: 70px; left: 0; right: 0;
+                background: rgba(11, 17, 32, 0.98); backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                padding: 1.5rem 0; border-bottom: 1px solid var(--card-border);
+                z-index: 999; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            }
+            .nav-links.open { display: flex; }
+            .nav-links li { width: 100%; text-align: center; }
+            .nav-links a { display: block; padding: 1rem 2rem; font-size: 1rem; }
             .flex-row { flex-direction: column; gap: 3rem; }
             .skills-section { flex-direction: column; }
             .hero { flex-direction: column; text-align: center; padding-top: 7rem; min-height: auto;}
@@ -255,15 +280,19 @@
 
     <nav>
         <div class="logo">Nourhan.</div>
-        <ul class="nav-links">
+        <ul class="nav-links" id="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#education">Education</a></li>
             <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#certificates">Certificates</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+        <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">
+            <i class="fa-solid fa-bars"></i>
+        </button>
     </nav>
 
     <section id="home" class="hero">
@@ -274,12 +303,12 @@
             <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
                 <a href="#projects" class="hero-btn">View My Work</a>
                 <!-- مسار ملف السيرة الذاتية (CV) هنا -->
-                <a href="Nourhan_CV.pdf" target="_blank" class="hero-btn secondary"><i class="fa-solid fa-download"></i> Download CV</a>
+                <a href="cv.html" target="_blank" class="hero-btn secondary"><i class="fa-solid fa-file-lines"></i> View / Print CV</a>
             </div>
         </div>
         <div class="hero-right">
             <div class="blob"></div>
-            <img src="picture/WhatsApp Image 2026-04-05 at 12.38.16 PM.jpeg" alt="Nourhan Profile" class="hero-img">
+            <img src="picture/WhatsApp%20Image%202026-04-05%20at%2012.38.16%20PM.jpeg" alt="Nourhan Profile" class="hero-img">
         </div>
     </section>
 
@@ -402,6 +431,27 @@
                     <p>Taking your Figma or Adobe XD designs and transforming them into beautiful, smooth, and highly responsive interactive mobile interfaces.</p>
                 </div>
             </div>
+            <div class="service-card glass-card" style="padding: 0; align-items: stretch; text-align: center;">
+                <img src="https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?q=80&w=600&auto=format&fit=crop" alt="App Maintenance" style="width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--card-border);">
+                <div style="padding: 2.5rem;">
+                    <h3>App Maintenance & Support</h3>
+                    <p>Providing ongoing bug fixes, performance monitoring, dependency updates, and feature enhancements to keep your app running smoothly after launch.</p>
+                </div>
+            </div>
+            <div class="service-card glass-card" style="padding: 0; align-items: stretch; text-align: center;">
+                <img src="https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?q=80&w=600&auto=format&fit=crop" alt="Firebase" style="width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--card-border);">
+                <div style="padding: 2.5rem;">
+                    <h3>Firebase & Real-time Database</h3>
+                    <p>Integrating Firebase Authentication, Firestore, Cloud Storage, and Push Notifications to power real-time, scalable, and secure mobile apps.</p>
+                </div>
+            </div>
+            <div class="service-card glass-card" style="padding: 0; align-items: stretch; text-align: center;">
+                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=600&auto=format&fit=crop" alt="App Store Publishing" style="width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--card-border);">
+                <div style="padding: 2.5rem;">
+                    <h3>App Store Publishing</h3>
+                    <p>Handling the full process of submitting your Flutter app to Google Play Store and Apple App Store, including store optimization and compliance checks.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -417,65 +467,127 @@
             <button class="scroll-btn left" onclick="scrollSlider('projects-slider', -1)"><i class="fa-solid fa-chevron-left"></i></button>
 
             <div class="slider-container" id="projects-slider">
-                <!-- Project 1: Patient App (Main) -->
+
+                <!-- Project 1: flutter_doctor_app -->
                 <div class="card glass-card">
-                    <div class="card-img-container" style="height: 400px; background: rgba(0,0,0,0.4);">
-                        <img src="picture/WhatsApp Image 2026-03-31 at 7.13.00 AM.jpeg" alt="Dental Services" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top:0; left:0; z-index: 10; padding: 15px;">
+                    <div class="card-img-container" style="height: 220px; background: linear-gradient(135deg, rgba(244,63,94,0.3), rgba(139,92,246,0.3));">
+                        <div class="card-img-placeholder">
+                            <i class="fa-solid fa-stethoscope" style="font-size: 4rem; color: var(--primary);"></i>
+                        </div>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">Dental Clinic (Patient App)</h3>
-                        <p class="card-desc">A complete Flutter application for dental clinics, allowing patients to browse services (Whitening, Implants) and book appointments with specialized dentists.</p>
-                        <div style="margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
-                            <h4 style="color: var(--accent); font-size: 1rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-code-compare"></i> Challenge & Solution:</h4>
-                            <p class="card-desc" style="font-size: 0.95rem;"><strong>Challenge:</strong> Ensuring a smooth UI while loading extensive lists of dental services and images.<br><strong>Solution:</strong> Used cached network images and optimized Flutter's ListView builder for high-performance rendering.</p>
+                        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.8rem;">
+                            <span style="background:rgba(139,92,246,0.15); border:1px solid rgba(139,92,246,0.3); color:#a78bfa; padding:0.25rem 0.8rem; border-radius:50px; font-size:0.8rem; font-weight:700;">Dart · Flutter</span>
+                            <span style="color:var(--text-muted); font-size:0.85rem;">Dec 2025</span>
                         </div>
+                        <h3 class="card-title">Flutter Doctor App</h3>
+                        <p class="card-desc">A clean Flutter UI for a doctor appointment app. Browse specialties, view doctor profiles, and schedule visits — fully designed with a modern mobile-first interface.</p>
+                        <div style="margin-top: 1.2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.9rem;">
+                            <h4 style="color: var(--accent); font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fa-solid fa-code-compare"></i> Challenge & Solution:</h4>
+                            <p class="card-desc" style="font-size: 0.9rem; line-height: 1.6;"><strong>Challenge:</strong> Managing complex responsive UI layouts across multiple screen sizes while keeping smooth 60fps scrolling.<br><strong>Solution:</strong> Built modular custom widgets with LayoutBuilder and optimized ListView rendering.</p>
+                        </div>
+                        <a href="https://github.com/nmotako27-lgtm/flutter_doctor_app" target="_blank" style="display:inline-flex; align-items:center; gap:0.5rem; margin-top:1.2rem; color:var(--accent); font-weight:700; text-decoration:none; font-size:0.95rem;">
+                            <i class="fa-brands fa-github"></i> View on GitHub
+                        </a>
                     </div>
                 </div>
 
-                <!-- Project 2: Doctor Dashboard -->
+                <!-- Project 2: booking-event-app -->
                 <div class="card glass-card">
-                    <div class="card-img-container" style="height: 400px; background: rgba(0,0,0,0.4);">
-                        <img src="picture/WhatsApp Image 2026-03-31 at 7.13.00 AM (1).jpeg" alt="Doctor Dashboard" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top:0; left:0; z-index: 10; padding: 15px;">
+                    <div class="card-img-container" style="height: 220px; background: linear-gradient(135deg, rgba(251,191,36,0.3), rgba(244,63,94,0.3));">
+                        <div class="card-img-placeholder">
+                            <i class="fa-solid fa-calendar-check" style="font-size: 4rem; color: var(--accent);"></i>
+                        </div>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">Clinic App (Doctor Panel)</h3>
-                        <p class="card-desc">A dedicated interface for dentists to check their schedules, manage daily appointments, and stay connected with their patients efficiently.</p>
-                        <div style="margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
-                            <h4 style="color: var(--accent); font-size: 1rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-code-compare"></i> Challenge & Solution:</h4>
-                            <p class="card-desc" style="font-size: 0.95rem;"><strong>Challenge:</strong> Providing a real-time, categorized overview of a dynamic daily schedule.<br><strong>Solution:</strong> Integrated real-time Firebase listeners with complex indexing to separate past, current, and future appointments efficiently.</p>
+                        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.8rem;">
+                            <span style="background:rgba(139,92,246,0.15); border:1px solid rgba(139,92,246,0.3); color:#a78bfa; padding:0.25rem 0.8rem; border-radius:50px; font-size:0.8rem; font-weight:700;">Dart · Flutter</span>
+                            <span style="color:var(--text-muted); font-size:0.85rem;">Feb 2026</span>
                         </div>
+                        <h3 class="card-title">Booking Event App</h3>
+                        <p class="card-desc">A cross-platform mobile app for booking events with time-slot management. Features intuitive calendar selection, morning/evening slots, and real-time availability updates.</p>
+                        <div style="margin-top: 1.2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.9rem;">
+                            <h4 style="color: var(--accent); font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fa-solid fa-code-compare"></i> Challenge & Solution:</h4>
+                            <p class="card-desc" style="font-size: 0.9rem; line-height: 1.6;"><strong>Challenge:</strong> Handling dynamic time-slot conflicts and calendar date filtering in real time.<br><strong>Solution:</strong> Implemented responsive state-driven validation algorithms to prevent duplicate bookings.</p>
+                        </div>
+                        <a href="https://github.com/nmotako27-lgtm/booking-event-app" target="_blank" style="display:inline-flex; align-items:center; gap:0.5rem; margin-top:1.2rem; color:var(--accent); font-weight:700; text-decoration:none; font-size:0.95rem;">
+                            <i class="fa-brands fa-github"></i> View on GitHub
+                        </a>
                     </div>
                 </div>
 
-                <!-- Project 3: Booking System -->
+                <!-- Project 3: E-commerce -->
                 <div class="card glass-card">
-                    <div class="card-img-container" style="height: 400px; background: rgba(0,0,0,0.4);">
-                        <img src="picture/WhatsApp Image 2026-03-31 at 7.13.00 AM (2).jpeg" alt="Booking System" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top:0; left:0; z-index: 10; padding: 15px;">
+                    <div class="card-img-container" style="height: 220px; background: linear-gradient(135deg, rgba(16,185,129,0.3), rgba(139,92,246,0.3));">
+                        <div class="card-img-placeholder">
+                            <i class="fa-solid fa-bag-shopping" style="font-size: 4rem; color: #10b981;"></i>
+                        </div>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">Smart Booking System</h3>
-                        <p class="card-desc">Features an intuitive calendar and time-slot selection system (Morning/Evening slots) allowing users to pick their preferred time for a check-up.</p>
-                        <div style="margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
-                            <h4 style="color: var(--accent); font-size: 1rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-code-compare"></i> Challenge & Solution:</h4>
-                            <p class="card-desc" style="font-size: 0.95rem;"><strong>Challenge:</strong> Handling concurrency where two patients might attempt to book the exact same time slot simultaneously.<br><strong>Solution:</strong> Implemented optimistic UI updates with backend transaction locks to guarantee slot exclusivity.</p>
+                        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.8rem;">
+                            <span style="background:rgba(139,92,246,0.15); border:1px solid rgba(139,92,246,0.3); color:#a78bfa; padding:0.25rem 0.8rem; border-radius:50px; font-size:0.8rem; font-weight:700;">Dart · Flutter</span>
+                            <span style="color:var(--text-muted); font-size:0.85rem;">Mar 2026</span>
                         </div>
+                        <h3 class="card-title">E-Commerce App</h3>
+                        <p class="card-desc">A full-featured Flutter e-commerce application with product browsing, cart management, secure auth flow, and a smooth checkout experience built with clean architecture.</p>
+                        <div style="margin-top: 1.2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.9rem;">
+                            <h4 style="color: var(--accent); font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fa-solid fa-code-compare"></i> Challenge & Solution:</h4>
+                            <p class="card-desc" style="font-size: 0.9rem; line-height: 1.6;"><strong>Challenge:</strong> Coordinating multi-screen state transitions between product filtering, cart calculations, and authentication.<br><strong>Solution:</strong> Applied clean architecture principles and local caching to persist user cart data across sessions.</p>
+                        </div>
+                        <a href="https://github.com/nmotako27-lgtm/E-commerce" target="_blank" style="display:inline-flex; align-items:center; gap:0.5rem; margin-top:1.2rem; color:var(--accent); font-weight:700; text-decoration:none; font-size:0.95rem;">
+                            <i class="fa-brands fa-github"></i> View on GitHub
+                        </a>
                     </div>
                 </div>
 
-                <!-- Project 4: Authentication -->
+                <!-- Project 4: doc-time-with-a-server-as-a-backend -->
                 <div class="card glass-card">
-                    <div class="card-img-container" style="height: 400px; background: rgba(0,0,0,0.4);">
-                        <img src="picture/WhatsApp Image 2026-03-31 at 7.13.00 AM (3).jpeg" alt="Authentication" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top:0; left:0; z-index: 10; padding: 15px;">
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Secure Authentication</h3>
-                        <p class="card-desc">A custom-built secure login and registration system with a clean UI, ensuring patient data and doctor accounts are kept private.</p>
-                        <div style="margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
-                            <h4 style="color: var(--accent); font-size: 1rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-code-compare"></i> Challenge & Solution:</h4>
-                            <p class="card-desc" style="font-size: 0.95rem;"><strong>Challenge:</strong> Securing user data and keeping authentication states persistent across app restarts.<br><strong>Solution:</strong> Used secure internal storage for token caching and implemented an auto-login routing mechanism for a seamless UX.</p>
+                    <div class="card-img-container" style="height: 220px; background: linear-gradient(135deg, rgba(59,130,246,0.3), rgba(244,63,94,0.3));">
+                        <div class="card-img-placeholder">
+                            <i class="fa-solid fa-server" style="font-size: 4rem; color: #3b82f6;"></i>
                         </div>
                     </div>
+                    <div class="card-content">
+                        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.8rem;">
+                            <span style="background:rgba(139,92,246,0.15); border:1px solid rgba(139,92,246,0.3); color:#a78bfa; padding:0.25rem 0.8rem; border-radius:50px; font-size:0.8rem; font-weight:700;">Dart · Flutter · REST API</span>
+                            <span style="color:var(--text-muted); font-size:0.85rem;">May 2026</span>
+                        </div>
+                        <h3 class="card-title">Doc Time (API Backend)</h3>
+                        <p class="card-desc">A doctor appointment Flutter app integrated with a real server backend. Handles authentication, doctor listing, appointment booking, and data persistence via RESTful APIs.</p>
+                        <div style="margin-top: 1.2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.9rem;">
+                            <h4 style="color: var(--accent); font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fa-solid fa-code-compare"></i> Challenge & Solution:</h4>
+                            <p class="card-desc" style="font-size: 0.9rem; line-height: 1.6;"><strong>Challenge:</strong> Synchronizing client UI with server responses, handling network latency, and token management.<br><strong>Solution:</strong> Built a centralized API client with error-handling interceptors and async state management.</p>
+                        </div>
+                        <a href="https://github.com/nmotako27-lgtm/doc-time-with-a-server-as-a-backend" target="_blank" style="display:inline-flex; align-items:center; gap:0.5rem; margin-top:1.2rem; color:var(--accent); font-weight:700; text-decoration:none; font-size:0.95rem;">
+                            <i class="fa-brands fa-github"></i> View on GitHub
+                        </a>
+                    </div>
                 </div>
+
+                <!-- Project 5: fastfood-website -->
+                <div class="card glass-card">
+                    <div class="card-img-container" style="height: 220px; background: linear-gradient(135deg, rgba(251,191,36,0.3), rgba(16,185,129,0.3));">
+                        <div class="card-img-placeholder">
+                            <i class="fa-solid fa-burger" style="font-size: 4rem; color: var(--accent);"></i>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.8rem;">
+                            <span style="background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.3); color:#34d399; padding:0.25rem 0.8rem; border-radius:50px; font-size:0.8rem; font-weight:700;">HTML · CSS · Web</span>
+                            <span style="color:var(--text-muted); font-size:0.85rem;">Jun 2026</span>
+                        </div>
+                        <h3 class="card-title">Fast Food Website</h3>
+                        <p class="card-desc">A modern, responsive fast food restaurant website with an appetizing UI. Features menu display, ordering interface, and smooth CSS animations — deployed on GitHub Pages.</p>
+                        <div style="margin-top: 1.2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.9rem;">
+                            <h4 style="color: var(--accent); font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fa-solid fa-code-compare"></i> Challenge & Solution:</h4>
+                            <p class="card-desc" style="font-size: 0.9rem; line-height: 1.6;"><strong>Challenge:</strong> Crafting responsive grid layouts and animations across diverse screen resolutions without performance lag.<br><strong>Solution:</strong> Used CSS Grid/Flexbox with hardware-accelerated transforms and media query breakpoints.</p>
+                        </div>
+                        <a href="https://github.com/nmotako27-lgtm/fastfood-website" target="_blank" style="display:inline-flex; align-items:center; gap:0.5rem; margin-top:1.2rem; color:var(--accent); font-weight:700; text-decoration:none; font-size:0.95rem;">
+                            <i class="fa-brands fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -491,56 +603,78 @@
             <div class="slider-container" id="certs-slider">
                 <!-- Certificate 1: Ultimate Academy Onyx ERP -->
                 <div class="card glass-card">
-                    <div class="card-img-container">
-                        <img src="picture/WhatsApp Image 2026-03-31 at 7.10.29 AM.jpeg" alt="Ultimate Academy" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top:0; left:0; z-index: 10;">
+                    <div class="card-img-container" style="height: 240px; background: rgba(0,0,0,0.4);">
+                        <img src="picture/WhatsApp%20Image%202026-03-31%20at%207.07.30%20AM.jpeg" alt="Onyx ERP Certificate" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top:0; left:0; z-index: 10; padding: 10px;">
                     </div>
                     <div class="card-content">
                         <h3 class="card-title">Electronic Accounting (Onyx ERP)</h3>
-                        <p class="card-desc">Certificate of Completion from Ultimate Academy for successful completion of 15 Hours of Electronic Accounting on the Onyx ERP System.</p>
+                        <p class="card-desc">Certificate of Completion from Ultimate Academy & Assiut University for 15 Hours of Electronic Accounting on the Onyx ERP System (July 2025).</p>
                     </div>
                 </div>
 
                 <!-- Certificate 2: YLY HR Committee -->
                 <div class="card glass-card">
-                    <div class="card-img-container">
-                        <img src="picture/WhatsApp Image 2026-03-31 at 7.10.29 AM (1).jpeg" alt="YLY HR" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top:0; left:0; z-index: 10;">
+                    <div class="card-img-container" style="height: 240px; background: rgba(0,0,0,0.4);">
+                        <img src="picture/WhatsApp%20Image%202026-03-31%20at%207.07.30%20AM%20%281%29.jpeg" alt="YLY HR Certificate" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top:0; left:0; z-index: 10; padding: 10px;">
                     </div>
                     <div class="card-content">
                         <h3 class="card-title">YLY HR Committee Member</h3>
-                        <p class="card-desc">Certificate of Appreciation from the Ministry of Youth and Sports for outstanding efforts as a Human Resources Committee member in the YLY project.</p>
+                        <p class="card-desc">Certificate of Appreciation from Ministry of Youth & Sports for outstanding efforts as a Human Resources Committee member in YLY Project (Season 6, 2024-2025).</p>
                     </div>
                 </div>
 
                 <!-- Certificate 3: YLP Youth Leadership Program -->
                 <div class="card glass-card">
-                    <div class="card-img-container">
-                        <img src="picture/WhatsApp Image 2026-03-31 at 7.10.29 AM (2).jpeg" alt="YLP" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top:0; left:0; z-index: 10;">
+                    <div class="card-img-container" style="height: 240px; background: rgba(0,0,0,0.4);">
+                        <img src="picture/WhatsApp%20Image%202026-03-31%20at%207.07.30%20AM%20%282%29.jpeg" alt="YLP Certificate" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top:0; left:0; z-index: 10; padding: 10px;">
                     </div>
                     <div class="card-content">
                         <h3 class="card-title">Youth Leadership Program (YLP)</h3>
-                        <p class="card-desc">Certificate of Appreciation for successfully completing the Youth Leadership Program (YLP) training period 2024-2025.</p>
+                        <p class="card-desc">Certificate of Appreciation from Ministry of Youth & Sports for completing the Youth Leadership Program (YLP) with an excellent Grade: GPA (A) (2024-2025).</p>
                     </div>
                 </div>
 
                 <!-- Certificate 4: BIS Assiut OC Committee -->
                 <div class="card glass-card">
-                    <div class="card-img-container">
-                        <img src="picture/WhatsApp Image 2026-03-31 at 7.10.29 AM (3).jpeg" alt="BIS OC" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top:0; left:0; z-index: 10;">
+                    <div class="card-img-container" style="height: 240px; background: rgba(0,0,0,0.4);">
+                        <img src="picture/WhatsApp%20Image%202026-03-31%20at%207.10.29%20AM.jpeg" alt="BIS OC Certificate" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top:0; left:0; z-index: 10; padding: 10px;">
                     </div>
                     <div class="card-content">
                         <h3 class="card-title">OC Committee Member (BIS Assiut)</h3>
-                        <p class="card-desc">Certificate of Appreciation for being a key part of the Organizing Committee team and warmly welcoming newcomers.</p>
+                        <p class="card-desc">Certificate of Appreciation from BIS Assiut University for being a key Organizing Committee member warmly welcoming newcomers.</p>
                     </div>
                 </div>
 
                 <!-- Certificate 5: Advanced English Course -->
                 <div class="card glass-card">
-                    <div class="card-img-container">
-                        <img src="picture/WhatsApp Image 2026-03-31 at 7.07.30 AM (1).jpeg" alt="English Course" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top:0; left:0; z-index: 10;">
+                    <div class="card-img-container" style="height: 240px; background: rgba(0,0,0,0.4);">
+                        <img src="picture/WhatsApp%20Image%202026-03-31%20at%207.10.29%20AM%20%281%29.jpeg" alt="English Course Certificate" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top:0; left:0; z-index: 10; padding: 10px;">
                     </div>
                     <div class="card-content">
                         <h3 class="card-title">Advanced English Course (Level 12)</h3>
-                        <p class="card-desc">Certificate from the Computer Science Training Center for successfully completing the English Language General Course with a grade of 'Excellent'.</p>
+                        <p class="card-desc">Certificate from Computer Science Training Center & Sohag Governorate for completing Advanced English Course with Grade 'Excellent' (Dec 2024).</p>
+                    </div>
+                </div>
+
+                <!-- Certificate 6: Content Marketing -->
+                <div class="card glass-card">
+                    <div class="card-img-container" style="height: 240px; background: rgba(0,0,0,0.4);">
+                        <img src="picture/WhatsApp%20Image%202026-03-31%20at%207.10.29%20AM%20%282%29.jpeg" alt="Content Marketing Certificate" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top:0; left:0; z-index: 10; padding: 10px;">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Content Marketing Training</h3>
+                        <p class="card-desc">Certificate of Appreciation from the British Cultural Center for Information Technology (BCCIT Academy) in Content Marketing with Grade 'Excellent' (Dec 2023).</p>
+                    </div>
+                </div>
+
+                <!-- Certificate 7: ASORC Summer Internship -->
+                <div class="card glass-card">
+                    <div class="card-img-container" style="height: 240px; background: rgba(0,0,0,0.4);">
+                        <img src="picture/WhatsApp%20Image%202026-03-31%20at%207.10.29%20AM%20%283%29.jpeg" alt="ASORC Summer Training" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top:0; left:0; z-index: 10; padding: 10px;">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Summer Internship (ASORC Oil Refining)</h3>
+                        <p class="card-desc">Certificate from Assiut Oil Refining Company (ASORC) for completing the Summer Training Program for BIS university students (Summer 2024).</p>
                     </div>
                 </div>
             </div>
@@ -575,11 +709,10 @@
     </section>
 
     <footer>
-        <p>&copy; 2024 Nourhan Mahmoud Shawky | Built with Flutter logic & elegant design.</p>
+        <p>&copy; 2026 Nourhan Mahmoud Shawky | Built with Flutter logic & elegant design.</p>
         <div class="footer-socials">
             <a href="https://github.com/nmotako27-lgtm" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
-            <!-- رابط صفحتك على لينكد إن هنا -->
-            <a href="#" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.linkedin.com/in/nourhan-mahmoud-ba66a62b1/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
             <!-- رابط صفحتك على أي منصة أخرى (مثل بيهانس) هنا -->
             <a href="#" target="_blank" title="Behance"><i class="fa-brands fa-behance"></i></a>
         </div>

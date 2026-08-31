@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nourhan Mahmoud - Resume (ATS-Friendly)</title>
+    <!-- ATS Compatible Standard Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --text-main: #0f172a;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --border-color: #cbd5e1;
+            --bg-page: #f1f5f9;
+            --sheet-bg: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.5;
+            padding: 2rem 1rem;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Top Action Bar */
+        .cv-actions {
+            max-width: 850px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.4rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 6px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 4px 10px rgba(30, 58, 138, 0.2);
+        }
+        .btn-primary:hover {
+            background-color: #172554;
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background: #ffffff;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+        .btn-outline:hover {
+            background: #f8fafc;
+            color: var(--text-main);
+        }
+
+        /* 100% Strict Single-Column ATS Sheet */
+        .resume-sheet {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--sheet-bg);
+            padding: 3rem 3.5rem;
+            border-radius: 4px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Header Section */
+        .resume-header {
+            text-align: center;
+            border-bottom: 2px solid var(--text-main);
+            padding-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .candidate-name {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .candidate-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.6rem;
+            letter-spacing: 0.3px;
+        }
+
+        .contact-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem 1rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-row a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .contact-row a:hover {
+            text-decoration: underline;
+        }
+
+        .separator {
+            color: var(--border-color);
+        }
+
+        /* Section Styling */
+        .resume-section {
+            margin-bottom: 1.4rem;
+        }
+
+        .section-heading {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border-bottom: 1.5px solid var(--primary);
+            padding-bottom: 0.25rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .summary-paragraph {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* Technical Skills List */
+        .skills-table {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            font-size: 0.92rem;
+        }
+
+        .skill-line {
+            display: flex;
+            line-height: 1.5;
+        }
+
+        .skill-label {
+            font-weight: 700;
+            color: var(--text-main);
+            min-width: 190px;
+            flex-shrink: 0;
+        }
+
+        .skill-values {
+            color: var(--text-secondary);
+        }
+
+        /* Entry / Item Styling */
+        .entry {
+            margin-bottom: 1.1rem;
+        }
+        .entry:last-child {
+            margin-bottom: 0;
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 0.2rem;
+        }
+
+        .entry-title {
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .entry-subtitle {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .entry-date {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        /* Bullet Points */
+        .bullet-points {
+            list-style-type: disc;
+            padding-left: 1.25rem;
+            margin-top: 0.35rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .bullet-points strong {
+            color: var(--text-main);
+        }
+
+        /* Strict Print / PDF Mode */
+        @media print {
+            @page {
+                margin: 12mm 15mm;
+                size: A4;
+            }
+            body {
+                background: #ffffff !important;
+                padding: 0 !important;
+                color: #000000 !important;
+            }
+            .cv-actions {
+                display: none !important;
+            }
+            .resume-sheet {
+                padding: 0 !important;
+                border: none !important;
+                box-shadow: none !important;
+                max-width: 100% !important;
+            }
+            .section-heading {
+                color: #0f172a !important;
+                border-bottom-color: #0f172a !important;
+            }
+            .candidate-title {
+                color: #1e3a8a !important;
+            }
+            .entry, .resume-section {
+                break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .resume-sheet {
+                padding: 1.5rem;
+            }
+            .skill-line {
+                flex-direction: column;
+            }
+            .skill-label {
+                min-width: auto;
+                margin-bottom: 0.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cv-actions">
+        <a href="index.html" class="btn btn-outline"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
+        <button onclick="window.print()" class="btn btn-primary"><i class="fa-solid fa-file-pdf"></i> Print / Save as PDF</button>
+    </div>
+
+    <div class="resume-sheet">
+        
+        <!-- Header -->
+        <header class="resume-header">
+            <h1 class="candidate-name">Nourhan Mahmoud Shawky</h1>
+            <div class="candidate-title">Flutter & Mobile Application Developer</div>
+            <div class="contact-row">
+                <span><i class="fa-solid fa-location-dot"></i> Assiut, Egypt</span>
+                <span class="separator">|</span>
+                <span><i class="fa-solid fa-phone"></i> +20 102 289 6212</span>
+                <span class="separator">|</span>
+                <a href="mailto:nwrhanmhmwd357@gmail.com"><i class="fa-solid fa-envelope"></i> nwrhanmhmwd357@gmail.com</a>
+            </div>
+            <div class="contact-row" style="margin-top: 0.4rem;">
+                <a href="https://linkedin.com/in/nourhan-mahmoud-ba66a62b1" target="_blank"><i class="fa-brands fa-linkedin"></i> linkedin.com/in/nourhan-mahmoud-ba66a62b1</a>
+                <span class="separator">|</span>
+                <a href="https://github.com/nmotako27-lgtm" target="_blank"><i class="fa-brands fa-github"></i> github.com/nmotako27-lgtm</a>
+            </div>
+        </header>
+
+        <!-- Professional Summary -->
+        <section class="resume-section">
+            <h2 class="section-heading">Professional Summary</h2>
+            <p class="summary-paragraph">
+                Detail-oriented and results-driven <strong>Mobile Application Developer</strong> specializing in <strong>Flutter & Dart</strong> with an academic foundation in Business Information Systems (BIS). Experienced in building robust, scalable, and responsive cross-platform applications for Android and iOS. Proficient in Clean Architecture, state management (Bloc, Provider), RESTful API integration, and Firebase backend services. Passionate about translating complex UI/UX wireframes into performant, pixel-perfect production code.
+            </p>
+        </section>
+
+        <!-- Technical Skills -->
+        <section class="resume-section">
+            <h2 class="section-heading">Technical Skills</h2>
+            <div class="skills-table">
+                <div class="skill-line">
+                    <span class="skill-label">Mobile Development:</span>
+                    <span class="skill-values">Flutter, Dart, Cross-Platform App Development (Android & iOS), Material Design, Cupertino.</span>
+                </div>
+                <div class="skill-line">
+                    <span class="skill-label">Architecture & State:</span>
+                    <span class="skill-values">Clean Architecture, Bloc / Cubit, Provider, MVC / MVVM, OOP, SOLID Principles.</span>
+                </div>
+                <div class="skill-line">
+                    <span class="skill-label">Backend & APIs:</span>
+                    <span class="skill-values">RESTful APIs Integration, JSON Serialization, HTTP / Dio, Firebase (Auth, Firestore, Cloud Storage, Push Notifications).</span>
+                </div>
+                <div class="skill-line">
+                    <span class="skill-label">Databases & Storage:</span>
+                    <span class="skill-values">SQLite (sqflite), Shared Preferences, Local Caching, Offline Support.</span>
+                </div>
+                <div class="skill-line">
+                    <span class="skill-label">Tools & Methodologies:</span>
+                    <span class="skill-values">Git, GitHub, Postman, Figma to Flutter Implementation, Responsive Layouts, Agile/Scrum.</span>
+                </div>
+                <div class="skill-line">
+                    <span class="skill-label">Languages:</span>
+                    <span class="skill-values">Arabic (Native), English (Advanced - Level 12 Certified).</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional Experience -->
+        <section class="resume-section">
+            <h2 class="section-heading">Work Experience</h2>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Freelance Flutter Developer</span>
+                    <span class="entry-date">2024 – Present</span>
+                </div>
+                <div class="entry-subtitle">Independent Contractor · Remote</div>
+                <ul class="bullet-points">
+                    <li>Developed and deployed high-performance cross-platform mobile apps for Android and iOS using Flutter and Dart.</li>
+                    <li>Integrated RESTful APIs, token-based authentication (JWT), and Firebase services for reliable real-time operations.</li>
+                    <li>Applied clean architecture patterns and state management solutions to ensure scalable and testable codebases.</li>
+                    <li>Implemented asynchronous local caching mechanisms to provide smooth offline experiences for end users.</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">UI/UX to Code Specialist</span>
+                    <span class="entry-date">2023 – 2024</span>
+                </div>
+                <div class="entry-subtitle">Freelance / Project-based</div>
+                <ul class="bullet-points">
+                    <li>Converted complex Figma and Adobe XD design mockups into modular, responsive, pixel-perfect Flutter widget trees.</li>
+                    <li>Optimized ListView builders and image caching pipelines to achieve smooth 60fps scrolling across diverse screen sizes.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Featured Projects -->
+        <section class="resume-section">
+            <h2 class="section-heading">Key Technical Projects</h2>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Doc Time (Doctor Appointment & Clinic App)</span>
+                    <span class="entry-date">May 2026</span>
+                </div>
+                <div class="entry-subtitle">Technologies: Flutter, Dart, REST API, Token Auth, Clean Architecture</div>
+                <ul class="bullet-points">
+                    <li>Engineered a full-featured medical appointment app connecting patients with specialized healthcare providers.</li>
+                    <li>Built a centralized API client with custom interceptors for session authentication, token refresh, and network retry.</li>
+                    <li><strong>Link:</strong> <a href="https://github.com/nmotako27-lgtm/doc-time-with-a-server-as-a-backend" target="_blank" style="color:var(--primary);">github.com/nmotako27-lgtm/doc-time-with-a-server-as-a-backend</a></li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">E-Commerce Mobile Application</span>
+                    <span class="entry-date">March 2026</span>
+                </div>
+                <div class="entry-subtitle">Technologies: Flutter, Dart, State Management, Local Storage Caching</div>
+                <ul class="bullet-points">
+                    <li>Developed an end-to-end shopping app featuring dynamic catalog browsing, real-time cart calculations, and checkout.</li>
+                    <li>Integrated persistent local caching using Shared Preferences to maintain user cart state across application restarts.</li>
+                    <li><strong>Link:</strong> <a href="https://github.com/nmotako27-lgtm/E-commerce" target="_blank" style="color:var(--primary);">github.com/nmotako27-lgtm/E-commerce</a></li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Booking Event Application</span>
+                    <span class="entry-date">February 2026</span>
+                </div>
+                <div class="entry-subtitle">Technologies: Flutter, Dart, Date-Time Slot Validation, Asynchronous UI</div>
+                <ul class="bullet-points">
+                    <li>Built an interactive event booking application featuring intuitive calendar filtering for morning and evening slots.</li>
+                    <li>Designed reactive slot validation logic preventing scheduling conflicts and concurrent double-bookings.</li>
+                    <li><strong>Link:</strong> <a href="https://github.com/nmotako27-lgtm/booking-event-app" target="_blank" style="color:var(--primary);">github.com/nmotako27-lgtm/booking-event-app</a></li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Flutter Doctor App UI</span>
+                    <span class="entry-date">December 2025</span>
+                </div>
+                <div class="entry-subtitle">Technologies: Flutter, Dart, Custom Widget Hierarchy, Responsive Layouts</div>
+                <ul class="bullet-points">
+                    <li>Created a modern mobile UI for doctor discovery, specialty categorization, and appointment management.</li>
+                    <li><strong>Link:</strong> <a href="https://github.com/nmotako27-lgtm/flutter_doctor_app" target="_blank" style="color:var(--primary);">github.com/nmotako27-lgtm/flutter_doctor_app</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section class="resume-section">
+            <h2 class="section-heading">Education</h2>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Bachelor of Commerce – Business Information Systems (BIS)</span>
+                    <span class="entry-date">2023 – 2027</span>
+                </div>
+                <div class="entry-subtitle">Faculty of Commerce · Assiut University, Egypt</div>
+                <ul class="bullet-points">
+                    <li>Relevant Coursework: Database Management Systems (DBMS), Systems Analysis & Design, Data Structures, Programming Fundamentals, Business Information Systems.</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Mobile App Development using Flutter (Specialization Track)</span>
+                    <span class="entry-date">2025</span>
+                </div>
+                <div class="entry-subtitle">National Telecommunication Institute (NTI), Egypt</div>
+                <ul class="bullet-points">
+                    <li>Comprehensive training covering modern Dart programming, Flutter framework architecture, state management, API integration, and mobile app deployment best practices.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Certifications & Internships -->
+        <section class="resume-section">
+            <h2 class="section-heading">Certifications & Internships</h2>
+            <ul class="bullet-points">
+                <li><strong>Electronic Accounting (Onyx ERP - 15 Hours):</strong> Ultimate Academy & Assiut University <em>(July 2025)</em></li>
+                <li><strong>Summer Training Internship (BIS Trainee):</strong> Assiut Oil Refining Company (ASORC) <em>(Summer 2024)</em></li>
+                <li><strong>Youth Leadership Program (YLP) [Grade: GPA A]:</strong> Ministry of Youth & Sports <em>(2024 – 2025)</em></li>
+                <li><strong>English Language General Course (Level 12 - Advanced [Grade: Excellent]):</strong> Computer Science Training Center <em>(Dec 2024)</em></li>
+                <li><strong>Human Resources Committee Member:</strong> YLY Project, Ministry of Youth & Sports <em>(2024 – 2025)</em></li>
+                <li><strong>Certified Training in Content Marketing [Grade: Excellent]:</strong> British Cultural Center For IT (BCCIT) <em>(Dec 2023)</em></li>
+                <li><strong>Organizing Committee Recognition (OC):</strong> Faculty of Commerce BIS, Assiut University <em>(2023)</em></li>
+            </ul>
+        </section>
+
+    </div>
+
+</body>
+</html>
